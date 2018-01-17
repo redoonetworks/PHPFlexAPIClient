@@ -1,2 +1,4 @@
 # FlexAPIClient
-PHP Client for vTigerCRM Flex API
+Sample PHP Client for vTigerCRM Flex API
+
+Used by Flex Suite APP
