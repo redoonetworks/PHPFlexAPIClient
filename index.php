@@ -37,12 +37,39 @@ if(defined('VT_EXISTING_TOKEN') && VT_EXISTING_TOKEN != '') {
  */
 //$structure = $client->modules()->getStructure("Accounts");
 
-
 /**
  * To run a simple Fulltextsearch use this (optionally within a single module)
  */
 //$result = $client->search()->simpleSearch('Company');
 //$result = $client->search()->simpleSearch('Company', 'Accounts');
 
-$result = $client->records()->getRecord('Accounts', 691);
+/**
+ * To read a record by ID
+ */
+//$result = $client->records()->getRecord('Accounts', 691);
+
+/**
+ * To edit a record by ID
+ */
+ /*
+$result = $client->records()->setRecord('Accounts', 691, array(
+    'description' => date('Y-m-d H:i:s')
+));
+*/
+
+/**
+ * Function return list of relations
+ */
+//$result = $client->records()->getRelationlist('Accounts', 691);
+
+/**
+ * Function return list of relations
+ */
+//$result = $client->records()->getComments('Accounts', 691);
+
+/**
+ * Function return list of related records
+ */
+$result = $client->records()->getRelatedRecords('Accounts', 691, 'Contacts');
+
 var_dump($result);
