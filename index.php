@@ -70,6 +70,11 @@ $result = $client->records()->setRecord('Accounts', 691, array(
 /**
  * Function return list of related records
  */
-$result = $client->records()->getRelatedRecords('Accounts', 691, 'Contacts');
+//$result = $client->records()->getRelatedRecords('Accounts', 691, 'Contacts');
+
+/**
+ *  Function to get the menu with groupings
+ */	
+$result = $client->menu()->get();
 
 var_dump($result);

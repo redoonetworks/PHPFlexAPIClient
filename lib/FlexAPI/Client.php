@@ -5,6 +5,7 @@ use FlexAPI\Manager\FieldManager;
 use FlexAPI\Manager\ModuleManager;
 use FlexAPI\Manager\RecordManager;
 use FlexAPI\Manager\SearchManager;
+use FlexAPI\Manager\MenuManager;
 use FlexAPI\Utils\Request;
 
 class Client
@@ -49,6 +50,12 @@ class Client
      */
     public function modules() {
         return new ModuleManager($this);
+    }
+    /**
+     * @return MenuManager
+     */
+    public function menu() {
+        return new MenuManager($this);
     }
     /**
      * @return SearchManager
