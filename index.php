@@ -8,12 +8,17 @@ require_once('config.php');
 
 $client = new \FlexAPI\Client(VTIGER_URL);
 
+
+//$response = $client->forget_password('Test98', 'test98@stefanwarnat.de');
+
+//var_dump($response);
+//exit();
+
 if(defined('VT_EXISTING_TOKEN') && VT_EXISTING_TOKEN != '') {
     $client->setLogintoken(VT_EXISTING_TOKEN);
 } else {
     $token = $client->login(VT_USERNAME, VT_PASSWORD);
 }
-
 
 /**
  * Get available Modulelist
@@ -75,6 +80,21 @@ $result = $client->records()->setRecord('Accounts', 691, array(
 /**
  *  Function to get the menu with groupings
  */	
-$result = $client->menu()->get();
+//$result = $client->menu()->get();
+
+/**
+ * Function to get list view of module
+ */
+//$result = $client->listing()->getListing('Accounts', array('limit' => 30, 'page' => 1));
+
+//$result = $client->listing()->getListing('Accounts', array('limit' => 30, 'page' => 1));
+
+//$result = $client->listing()->getListingCvId('Accounts', 6, array('limit' => 30, 'page' => 1));
+
+//$result = $client->listing()->getListing('Accounts', array('fields' => array('website', 'phone', 'accountname')));
+
+$result = $client->listing()->getListing('Accounts', array('fields' => array('accountname', 'industry'), 'condition' => array(array('industry','=','Banking'))));
+
+//$client->offline_token(VT_EXISTING_TOKEN);
 
 var_dump($result);

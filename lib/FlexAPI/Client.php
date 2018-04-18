@@ -2,6 +2,7 @@
 namespace FlexAPI;
 
 use FlexAPI\Manager\FieldManager;
+use FlexAPI\Manager\ListingManager;
 use FlexAPI\Manager\ModuleManager;
 use FlexAPI\Manager\RecordManager;
 use FlexAPI\Manager\SearchManager;
@@ -29,6 +30,12 @@ class Client
         $this->_Request->setLogintoken($token);
     }
 
+    public function forget_password($username, $email) {
+        $response = $this->_Request->post('login/forget_password', array('username' => $username, 'email' => $email));
+
+        var_dump($response);
+    }
+
     public function login($username, $password) {
         $response = $this->_Request->post('login/login', array('username' => $username, 'password' => $password));
 
@@ -36,6 +43,10 @@ class Client
             var_dump($response['token']);
             $this->setLogintoken($response['token']);
         }
+    }
+
+    public function offline_token($token) {
+        $this->_Request->get('login/offline_token', array('token' => $token));
     }
 
     /**
@@ -62,6 +73,12 @@ class Client
      */
     public function search() {
         return new SearchManager($this);
+    }
+    /**
+     * @return ListingManager
+     */
+    public function listing() {
+        return new ListingManager($this);
     }
 
     /**
