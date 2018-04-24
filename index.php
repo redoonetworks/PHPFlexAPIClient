@@ -18,6 +18,7 @@ if(defined('VT_EXISTING_TOKEN') && VT_EXISTING_TOKEN != '') {
     $client->setLogintoken(VT_EXISTING_TOKEN);
 } else {
     $token = $client->login(VT_USERNAME, VT_PASSWORD);
+    var_dump($token);exit();
 }
 
 /**
@@ -93,8 +94,11 @@ $result = $client->records()->setRecord('Accounts', 691, array(
 
 //$result = $client->listing()->getListing('Accounts', array('fields' => array('website', 'phone', 'accountname')));
 
-$result = $client->listing()->getListing('Accounts', array('fields' => array('accountname', 'industry'), 'condition' => array(array('industry','=','Banking'))));
+//$result = $client->listing()->getListing('Accounts', array('fields' => array('accountname', 'industry'), 'condition' => array(array('industry','=','Banking'))));
 
-//$client->offline_token(VT_EXISTING_TOKEN);
+//$result = $client->exports()->getExportOptions('Quotes');
 
+$result = $client->exports()->exportFile('Quotes', 1481, 'interface#pdfgenerator#1693');
+
+file_put_contents(dirname(__FILE__) . '/download.pdf', $result);
 var_dump($result);

@@ -15,14 +15,14 @@ class Request
         $this->_LoginToken = $token;
     }
 
-    public function post($action, $params = array()) {
-        return $this->request('POST', $action, $params);
+    public function post($action, $params = array(), $directReturn = false) {
+        return $this->request('POST', $action, $params, $directReturn);
     }
-    public function get($action, $params = array()) {
-        return $this->request('GET', $action, $params);
+    public function get($action, $params = array(), $directReturn = false) {
+        return $this->request('GET', $action, $params, $directReturn);
     }
 
-    public function request($method, $action, $params = array()) {
+    public function request($method, $action, $params = array(), $directReturn = false) {
         $curl = curl_init();
 
         /* Prepare Params */
@@ -89,6 +89,10 @@ class Request
         }
 */
         curl_close($curl);
+
+        if($directReturn === true) {
+            return $content;
+        }
 
         $result = json_decode($content, true);
 

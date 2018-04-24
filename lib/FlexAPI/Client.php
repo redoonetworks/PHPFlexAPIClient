@@ -1,6 +1,8 @@
 <?php
 namespace FlexAPI;
 
+use FlexAPI\Manager\ActionsManager;
+use FlexAPI\Manager\ExportManager;
 use FlexAPI\Manager\FieldManager;
 use FlexAPI\Manager\ListingManager;
 use FlexAPI\Manager\ModuleManager;
@@ -73,6 +75,18 @@ class Client
      */
     public function search() {
         return new SearchManager($this);
+    }
+    /**
+     * @return ActionsManager
+     */
+    public function actions() {
+        return new ActionsManager($this);
+    }
+    /**
+     * @return ExportManager
+     */
+    public function exports() {
+        return new ExportManager($this);
     }
     /**
      * @return ListingManager
