@@ -34,7 +34,8 @@ if(defined('VT_EXISTING_TOKEN') && VT_EXISTING_TOKEN != '') {
 /**
  * Get List with Blocks & Fields with all fields to a module for DetailView
  */
-//$fields = $client->fields()->getFields("Accounts", "DetailView");
+$fields = $client->fields()->getFields("Accounts", "DetailView");
+var_dump($fields);
 
 /**
  * Will generate an array with main module structure
@@ -57,12 +58,11 @@ if(defined('VT_EXISTING_TOKEN') && VT_EXISTING_TOKEN != '') {
 /**
  * To edit a record by ID
  */
- /*
+/*
 $result = $client->records()->setRecord('Accounts', 691, array(
     'description' => date('Y-m-d H:i:s')
 ));
 */
-
 /**
  * Function return list of relations
  */
@@ -90,7 +90,7 @@ $result = $client->records()->setRecord('Accounts', 691, array(
 
 //$result = $client->listing()->getListing('Accounts', array('limit' => 30, 'page' => 1));
 
-//$result = $client->listing()->getListingCvId('Accounts', 6, array('limit' => 30, 'page' => 1));
+//$result = $client->listing()->getListingCvId('Accounts', 6, array('limit' => 30, 'page' => 1, 'fields' => 2));
 
 //$result = $client->listing()->getListing('Accounts', array('fields' => array('website', 'phone', 'accountname')));
 
@@ -98,7 +98,8 @@ $result = $client->records()->setRecord('Accounts', 691, array(
 
 //$result = $client->exports()->getExportOptions('Quotes');
 
-$result = $client->exports()->exportFile('Quotes', 1481, 'interface#pdfgenerator#1693');
+//$result = $client->exports()->exportFile('Quotes', 1481, 'interface#pdfgenerator#1693');
 
-file_put_contents(dirname(__FILE__) . '/download.pdf', $result);
-var_dump($result);
+
+//file_put_contents(dirname(__FILE__) . '/download.pdf', $result);
+//var_dump($result);

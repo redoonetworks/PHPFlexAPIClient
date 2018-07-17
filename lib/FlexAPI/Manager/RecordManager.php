@@ -8,7 +8,7 @@ class RecordManager extends BaseManager
      * @return array with fields
      */
     public function getRecord($moduleName, $crmid) {
-        $response = $this->getClient()->request()->get('records/get/'.$moduleName.'/'.$crmid);
+        $response = $this->getClient()->request()->get('records/'.$moduleName.'/'.$crmid);
 
         return $response;
     }
