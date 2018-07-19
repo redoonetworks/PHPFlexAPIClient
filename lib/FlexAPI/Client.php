@@ -4,6 +4,7 @@ namespace FlexAPI;
 use FlexAPI\Manager\ActionsManager;
 use FlexAPI\Manager\ExportManager;
 use FlexAPI\Manager\FieldManager;
+use FlexAPI\Manager\HomeManager;
 use FlexAPI\Manager\ListingManager;
 use FlexAPI\Manager\ModuleManager;
 use FlexAPI\Manager\RecordManager;
@@ -81,6 +82,12 @@ class Client
      */
     public function actions() {
         return new ActionsManager($this);
+    }
+    /**
+     * @return HomeManager
+     */
+    public function home() {
+        return new HomeManager($this);
     }
     /**
      * @return ExportManager

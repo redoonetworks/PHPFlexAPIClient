@@ -34,8 +34,9 @@ if(defined('VT_EXISTING_TOKEN') && VT_EXISTING_TOKEN != '') {
 /**
  * Get List with Blocks & Fields with all fields to a module for DetailView
  */
-$fields = $client->fields()->getFields("Accounts", "DetailView");
-var_dump($fields);
+//$fields = $client->fields()->getFields("Accounts", "DetailView");
+//$fields = $client->fields()->getFields("Accounts", "EditView");
+//$fields = $client->fields()->getFields("Events", "EditView");
 
 /**
  * Will generate an array with main module structure
@@ -50,10 +51,13 @@ var_dump($fields);
 //$result = $client->search()->simpleSearch('Company');
 //$result = $client->search()->simpleSearch('Company', 'Accounts');
 
+//$result = $client->search()->radiusSearch(48.424353, 9.2545066, 50);
+
 /**
  * To read a record by ID
  */
 //$result = $client->records()->getRecord('Accounts', 691);
+//$result = $client->records()->getRecord('Events', 1569);
 
 /**
  * To edit a record by ID
@@ -63,6 +67,24 @@ $result = $client->records()->setRecord('Accounts', 691, array(
     'description' => date('Y-m-d H:i:s')
 ));
 */
+/*
+$result = $client->records()->createRecord('Accounts', array(
+    'accountname' => 'Text over API '.date('Y-m-d H:i:s'),
+    'description' => date('Y-m-d H:i:s')
+));
+*/
+/*
+$result = $client->records()->createRecord('Events', array(
+    'subject' => 'Text over API '.date('Y-m-d H:i:s'),
+    'date_start' => date('Y-m-d', time() + 86400),
+    'time_start' => date('H:i:s', time() + 86400),
+    'due_date' => date('Y-m-d', time() + 86400 + 7200),
+    'time_end' => date('H:i:s', time() + 86400 + 7200),
+    'activitytype' => 'Call',
+    'visibility' => 'Public',
+));
+*/
+
 /**
  * Function return list of relations
  */
@@ -96,10 +118,14 @@ $result = $client->records()->setRecord('Accounts', 691, array(
 
 //$result = $client->listing()->getListing('Accounts', array('fields' => array('accountname', 'industry'), 'condition' => array(array('industry','=','Banking'))));
 
+$result = $client->listing()->getListing('Events', array('fields' => array('subject', 'date_start', 'time_start', 'due_date', 'time_end', 'activitytype'), 'condition' => array(array('date_start','bw','2018-01-01,2018-02-01'))));
+
 //$result = $client->exports()->getExportOptions('Quotes');
 
 //$result = $client->exports()->exportFile('Quotes', 1481, 'interface#pdfgenerator#1693');
 
 
 //file_put_contents(dirname(__FILE__) . '/download.pdf', $result);
-//var_dump($result);
+
+//$result = $client->home()->getHome();
+var_dump($result);

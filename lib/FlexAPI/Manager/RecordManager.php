@@ -22,7 +22,16 @@ class RecordManager extends BaseManager
 
         return $response;
     }
-	
+    public function createRecord($moduleName, $fieldsToSet) {
+        if(empty($fieldsToSet)) {
+            return false;
+        }
+
+        $response = $this->getClient()->request()->post('records/create/'.$moduleName, array('fields' => $fieldsToSet));
+
+        return $response;
+    }
+
 	public function getRelationlist($moduleName, $crmid) {
         $response = $this->getClient()->request()->get('records/relations/list/'.$moduleName.'/'.$crmid, array());
 

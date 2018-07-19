@@ -9,4 +9,10 @@ class SearchManager extends BaseManager
         return $response;
     }
 
+    public function radiusSearch($lat, $lng, $radius = 50) {
+        $response = $this->getClient()->request()->get('search/radius', array('lat' => $lat, 'lng' => $lng, 'radius' => $radius));
+
+        return $response;
+    }
+
 }
