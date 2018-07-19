@@ -18,7 +18,7 @@ if(defined('VT_EXISTING_TOKEN') && VT_EXISTING_TOKEN != '') {
     $client->setLogintoken(VT_EXISTING_TOKEN);
 } else {
     $token = $client->login(VT_USERNAME, VT_PASSWORD);
-    var_dump($token);exit();
+    var_dump($token);
 }
 
 /**
