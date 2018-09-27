@@ -10,7 +10,7 @@ class ModuleManager extends BaseManager
     }
 
     public function getStructure($moduleName) {
-        $response = $this->getClient()->request()->get('modules/structure/'.$moduleName);
+        $response = $this->getClient()->request()->get('modules/'.$moduleName);
 
         return $response;
     }

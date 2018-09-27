@@ -42,8 +42,16 @@ class RecordManager extends BaseManager
 
         return $response;
 	}
-	public function getRelatedRecords($moduleName, $crmid, $relatedModule) {
-        $response = $this->getClient()->request()->get('records/relations/'.$moduleName.'/'.$crmid.'/'.$relatedModule, array());
+	public function getRelatedRecords($moduleName, $crmid, $relatedModule, $relationId = 0, $fields = array()) {
+        if(is_array($relationId)) {
+            $fields = $relationId;
+            $relationId = 0;
+        }
+        if(empty($relationId)) {
+            $response = $this->getClient()->request()->get('records/relations/' . $moduleName . '/' . $crmid . '/' . $relatedModule, array('fields' => $fields));
+        } else {
+            $response = $this->getClient()->request()->get('records/relations/' . $moduleName . '/' . $crmid . '/' . $relatedModule . '/' . $relationId, array('fields' => $fields));
+        }
 
         return $response;
 	}
