@@ -54,7 +54,15 @@ $structure = $client->modules()->getStructure("Accounts");
 //$result = $client->search()->simpleSearch('Company');
 //$result = $client->search()->simpleSearch('Company', 'Accounts');
 
-$result = $client->search()->complexeSearch('Contacts', array(array('firstname', 'c', '%a%')), array('firstname', 'lastname'), array('account_id' => array('accountname', 'bill_city')),0, 50);
+$result = $client->search()->complexeSearch(
+    'Contacts',
+    array(array('firstname', 'c', '%a%')),
+    array('firstname', 'lastname'),
+    array('account_id' => array('accountname', 'bill_city')),
+    0,
+    50,
+    array('lastname' => 'ASC')
+);
 
 //$result = $client->search()->radiusSearch(48.424353, 9.2545066, 50);
 
