@@ -2,6 +2,7 @@
 namespace FlexAPI;
 
 use FlexAPI\Manager\ActionsManager;
+use FlexAPI\Manager\CustomerportalManager;
 use FlexAPI\Manager\ExportManager;
 use FlexAPI\Manager\FieldManager;
 use FlexAPI\Manager\HomeManager;
@@ -82,6 +83,12 @@ class Client
      */
     public function actions() {
         return new ActionsManager($this);
+    }
+    /**
+     * @return CustomerportalManager
+     */
+    public function customerportal() {
+        return new CustomerportalManager($this);
     }
     /**
      * @return HomeManager

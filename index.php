@@ -53,7 +53,7 @@ $structure = $client->modules()->getStructure("Accounts");
  */
 //$result = $client->search()->simpleSearch('Company');
 //$result = $client->search()->simpleSearch('Company', 'Accounts');
-
+/*
 $result = $client->search()->complexeSearch(
     'Contacts',
     array(array('firstname', 'c', '%a%')),
@@ -63,7 +63,7 @@ $result = $client->search()->complexeSearch(
     50,
     array('lastname' => 'ASC')
 );
-
+*/
 //$result = $client->search()->radiusSearch(48.424353, 9.2545066, 50);
 
 /**
@@ -152,6 +152,12 @@ $result = $client->records()->createRecord('Contacts', array(
 //file_put_contents(dirname(__FILE__) . '/download.pdf', $result);
 
 //$result = $client->home()->getHome();
+
+// Login as Account
+//$result = $client->customerportal()->login('autohaustest@stefanwarnat.de', 'halloWelt');
+
+// Login as Contact
+//$result = $client->customerportal()->login('ich@stefanwarnat.de', 'tester');
 
 echo '<pre>';
 var_dump($result);
