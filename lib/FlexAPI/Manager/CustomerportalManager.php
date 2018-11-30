@@ -19,4 +19,22 @@ class CustomerportalManager extends BaseManager
 
         return $response;
     }
+
+    /**
+     * @param $moduleName
+     * @return array with fields
+     */
+    public function setPassword($contactid, $oldpassword, $password) {
+
+        $response = $this->getClient()->request()->post(
+            'customerportal/setpassword',
+            array(
+                'contactid' => $contactid,
+                'oldpassword' => $oldpassword,
+                'password' => $password,
+            )
+        );
+
+        return $response;
+    }
 }

@@ -142,6 +142,14 @@ $result = $client->records()->createRecord('Contacts', array(
 
 //$result = $client->listing()->getListing('Accounts', array('fields' => array('accountname', 'industry'), 'condition' => array(array('industry','=','Banking'))));
 
+//$result = $client->listing()->getListing('Accounts', array('fields' => array('accountname', 'industry'), 'condition' => array(array('glue' => 'OR', array('industry','=','Banking'), array('industry','c','Value'),))));
+/*
+$result = $client->listing()->getListing('Accounts', array('fields' => array('accountname', 'industry'), 'condition' => array(
+    array('glue' => 'OR', array('industry','=','Banking'), array('industry','c','Value'),),
+    array('glue' => 'AND', array('accountname','C','Company')),
+)));
+*/
+
 //$result = $client->listing()->getListing('Events', array('fields' => array('subject', 'date_start', 'time_start', 'due_date', 'time_end', 'activitytype'), 'condition' => array(array('date_start','bw','2018-01-01,2018-02-01'))));
 
 //$result = $client->exports()->getExportOptions('Quotes');
@@ -154,10 +162,16 @@ $result = $client->records()->createRecord('Contacts', array(
 //$result = $client->home()->getHome();
 
 // Login as Account
-//$result = $client->customerportal()->login('autohaustest@stefanwarnat.de', 'halloWelt');
+//$result = $client->customerportal()->login('autohaustest@stefanwarnat.de', 'halloaccountnew');
 
 // Login as Contact
-//$result = $client->customerportal()->login('ich@stefanwarnat.de', 'tester');
+//$result = $client->customerportal()->login('ich@stefanwarnat.de', 'hallocontactnew');
+
+// Set Password of Contact
+//$result = $client->customerportal()->setPassword(26, 'hallocontactnew', 'hallocontactnewer');
+
+// Set Password of Account
+//$result = $client->customerportal()->setPassword(1856, 'halloaccount', 'halloaccountnew');
 
 echo '<pre>';
 var_dump($result);

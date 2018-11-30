@@ -16,7 +16,15 @@ class SearchManager extends BaseManager
     }
 
     public function complexeSearch($moduleName, $condition, $fields, $referenceFields, $offset = 0, $limit = 30, $orderByFields = array()) {
-        $response = $this->getClient()->request()->get('search/complexe', array('limit' => $limit, 'orderby' => $orderByFields, 'offset' => $offset, 'referencefields' => $referenceFields, 'condition' => $condition, 'fields' => $fields, 'module' => $moduleName));
+        $response = $this->getClient()->request()->get('search/complexe', array(
+            'limit' => $limit,
+            'orderby' => $orderByFields,
+            'offset' => $offset,
+            'referencefields' => $referenceFields,
+            'condition' => $condition,
+            'fields' => $fields,
+            'module' => $moduleName
+        ));
 
         return $response;
     }
