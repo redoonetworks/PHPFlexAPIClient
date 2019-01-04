@@ -2,6 +2,8 @@
 namespace FlexAPI;
 
 use FlexAPI\Manager\ActionsManager;
+use FlexAPI\Manager\ActivityStreamManager;
+use FlexAPI\Manager\CloudFileManager;
 use FlexAPI\Manager\CustomerportalManager;
 use FlexAPI\Manager\ExportManager;
 use FlexAPI\Manager\FieldManager;
@@ -83,6 +85,20 @@ class Client
      */
     public function actions() {
         return new ActionsManager($this);
+    }
+
+    /**
+     * @return CloudFileManager
+     */
+    public function cloudfile() {
+        return new CloudFileManager($this);
+    }
+
+    /**
+     * @return ActivityStreamManager
+     */
+    public function activitystream() {
+        return new ActivityStreamManager($this);
     }
     /**
      * @return CustomerportalManager

@@ -34,7 +34,7 @@ if(defined('VT_EXISTING_TOKEN') && VT_EXISTING_TOKEN != '') {
 /**
  * Get List with Blocks & Fields with all fields to a module for DetailView
  */
-//$fields = $client->fields()->getFields("Accounts", "DetailView");
+//$result = $client->fields()->getFields("Accounts", "DetailView");
 //$fields = $client->fields()->getFields("Accounts", "EditView");
 //$fields = $client->fields()->getFields("Events", "EditView");
 
@@ -172,6 +172,26 @@ $result = $client->listing()->getListing('Accounts', array('fields' => array('ac
 
 // Set Password of Account
 //$result = $client->customerportal()->setPassword(1856, 'halloaccount', 'halloaccountnew');
+
+
+/*
+ * Flex Activity Stream Modul
+ */
+// Show all records sorted by date
+//$result = $client->activitystream()->getEntries(array(), 5,0);
+/*
+$result = $client->activitystream()->getEntries(
+    array(
+        array(
+            'type' => 'RECORD_EDIT',
+            'module' => 'Accounts'
+        )
+    ), 5,0);
+*/
+
+//$result = $client->cloudfile()->getFieldFileInfo(1946, 'cf_856');
+//$result = $client->cloudfile()->getFieldFileContent(1946, 'cf_856');
+$result = $client->cloudfile()->getRelations(1946);
 
 echo '<pre>';
 var_dump($result);
